@@ -9,8 +9,8 @@ def index(request):
     context = {
         'a' : data
     }
-    print(data)
-    print(context)
+    # print(data)
+    # print(context)
     return render(request,'index.html',context)
 
 def add(request):
@@ -32,7 +32,7 @@ def edit(request):
     context = {
         'a' : data,
     }
-    print(context)
+    # print(context)
     return redirect('/index/',context)
 
 def update(request,id):
@@ -51,6 +51,12 @@ def update(request,id):
         return redirect(index)
     return redirect(request,'/index/')
 
+def delete(request,id):
+    data = products.objects.filter(id = id).delete()
+    context = {
+        'a' : data
+    }
+    return redirect('/index/',context)
 
 # ------------- Ali s way of doing ------------
 
